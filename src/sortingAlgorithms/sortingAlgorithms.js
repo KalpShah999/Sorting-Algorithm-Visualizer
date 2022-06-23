@@ -42,3 +42,31 @@ function doMerge(mainArray, startIndex, middleIndex, endIndex, auxiliaryArray, a
         mainArray[k++] = auxiliaryArray[j++];
     }
 }
+
+export function bubbleSort(array) {
+    const animations = [];
+    let arraySorted = false;
+    let counter = 0;
+    while (!arraySorted) {
+        let i = 0;
+        arraySorted = true;
+        while (i < array.length - 1 - counter) {
+            animations.push([i, i + 1]);
+            animations.push([i, i + 1]);
+            if (array[i] > array[i + 1]) {
+                arraySorted = false;
+                const temp = array[i];
+                array[i] = array[i + 1];
+                array[i + 1] = temp;
+                animations.push([i, array[i]]);
+                animations.push([i + 1, array[i + 1]]);
+            } else {
+                animations.push([i, array[i]]);
+                animations.push([i + 1, array[i + 1]]);
+            }
+            i++;
+        }
+        counter++;
+    }
+    return animations;
+}
