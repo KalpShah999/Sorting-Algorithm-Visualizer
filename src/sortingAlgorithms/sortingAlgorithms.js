@@ -43,6 +43,54 @@ function doMerge(mainArray, startIndex, middleIndex, endIndex, auxiliaryArray, a
     }
 }
 
+export function quickSort(array) {
+    const animations = [];
+    if (array.length <= 1) return array;
+    const startingPosition = 0;
+    quickSortHelper(array, animations, startingPosition);
+    return animations;
+}
+
+function quickSortHelper(array, animations, startIndex) {
+    if (array.length <= 1) return;
+    const lowerArray = [];
+    const higherArray = [];
+    const pivotValue = array[array.length - 1];
+    for (let i = 0; i < array.length - 1; i++) {
+        if (array[i] <= pivotValue) {
+            lowerArray.push(array[i]);
+        } else {
+            higherArray.push(array[i]);
+        }
+    }
+    quickSortMerge(array, lowerArray, higherArray, pivotValue, animations, startIndex)
+    quickSortHelper(lowerArray, animations, startIndex);
+    quickSortHelper(higherArray, animations, startIndex + lowerArray.length + 1);
+}
+
+function quickSortMerge(array, lowerArray, higherArray, pivotValue, animations, startIndex) {
+    let k = 0;
+    for (let i = 0; i < lowerArray.length; i++) {
+        animations.push([k + startIndex, array.length - 1])
+        animations.push([k + startIndex, array.length - 1])
+        animations.push([k + startIndex, lowerArray[i]]);
+        array[k] = lowerArray[i];
+        k++;
+    }
+    animations.push([k + startIndex, array.length - 1]);
+    animations.push([k + startIndex, array.length - 1]);
+    animations.push([k + startIndex, pivotValue]);
+    array[k] = pivotValue;
+    k++;
+    for (let i = 0; i < higherArray.length; i++) {
+        animations.push([k + startIndex, array.length - 1])
+        animations.push([k + startIndex, array.length - 1])
+        animations.push([k + startIndex, higherArray[i]]);
+        array[k] = higherArray[i];
+        k++;
+    }
+}
+
 export function bubbleSort(array) {
     const animations = [];
     let arraySorted = false;
@@ -58,12 +106,9 @@ export function bubbleSort(array) {
                 const temp = array[i];
                 array[i] = array[i + 1];
                 array[i + 1] = temp;
-                animations.push([i, array[i]]);
-                animations.push([i + 1, array[i + 1]]);
-            } else {
-                animations.push([i, array[i]]);
-                animations.push([i + 1, array[i + 1]]);
             }
+            animations.push([i, array[i]]);
+            animations.push([i + 1, array[i + 1]]);
             i++;
         }
         counter++;

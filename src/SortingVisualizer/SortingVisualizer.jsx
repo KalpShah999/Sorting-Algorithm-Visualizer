@@ -17,7 +17,7 @@ export default class SortingVisualizer extends React.Component {
     resetArray() {
         const array = [];
 
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 243; i++) {
             array.push(randomIntFromInterval(5, 730));
         }
         this.setState({array});
@@ -48,7 +48,30 @@ export default class SortingVisualizer extends React.Component {
         }
     }
 
-    quickSort() {}
+    quickSort() {
+        const animations = sortingAlgorithm.quickSort(this.state.array);
+
+        for (let i = 0; i < animations.length; i++) {
+            const arrayBars = document.getElementsByClassName('array-bar');
+            const isColorChange = i % 3 !== 2;
+            if (isColorChange) {
+                const [barOneIndex, barTwoIndex] = animations[i];
+                const barOneStyle = arrayBars[barOneIndex].style;
+                const barTwoStyle = arrayBars[barTwoIndex].style;
+                const color = i % 3 === 0 ? 'blue' : 'pink';
+                setTimeout(() => {
+                    barOneStyle.backgroundColor = color;
+                    barTwoStyle.backgroundColor = color;
+                }, i + 10);
+            } else {
+                setTimeout(() => {
+                    const [barOneIndex, newHeight] = animations[i];
+                    const barOneStyle = arrayBars[barOneIndex].style;
+                    barOneStyle.height = `${newHeight}px`;
+                }, i + 10);
+            }
+        }
+    }
 
     heapSort() {}
     
