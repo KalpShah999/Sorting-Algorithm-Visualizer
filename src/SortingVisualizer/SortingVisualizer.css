@@ -1,11 +1,31 @@
 .array-container {
     position: absolute;
     left: 100px;
+    bottom: 25px;
 }
 
 .array-bar {
     width: 2px;
-    background-color: pink;
+    background-color: #A9DDD6;
     display: inline-block;
     margin: 0 1px;
+}
+
+.button {
+    background-color: #297373;
+    border: 2px solid #297373;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline;
+    font-size: 16px;
+    margin: 0px 32px;
+    transition-duration: 0.4s;
+}
+
+.button:hover {
+    background-color: white;
+    border: 2px solid #297373;
+    color: #297373;
 }

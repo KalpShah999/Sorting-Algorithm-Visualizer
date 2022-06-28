@@ -16,8 +16,8 @@ export default class SortingVisualizer extends React.Component {
 
     resetArray() {
         const array = [];
-
-        for (let i = 0; i < 243; i++) {
+        
+        for (let i = 0; i < 308; i++) {
             array.push(randomIntFromInterval(5, 730));
         }
         this.setState({array});
@@ -33,7 +33,7 @@ export default class SortingVisualizer extends React.Component {
                 const [barOneIndex, barTwoIndex] = animations[i];
                 const barOneStyle = arrayBars[barOneIndex].style;
                 const barTwoStyle = arrayBars[barTwoIndex].style;
-                const color = i % 3 === 0 ? 'blue' : 'pink';
+                const color = i % 3 === 0 ? '#FF8552' : '#A9DDD6';
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
@@ -58,7 +58,7 @@ export default class SortingVisualizer extends React.Component {
                 const [barOneIndex, barTwoIndex] = animations[i];
                 const barOneStyle = arrayBars[barOneIndex].style;
                 const barTwoStyle = arrayBars[barTwoIndex].style;
-                const color = i % 3 === 0 ? 'blue' : 'pink';
+                const color = i % 3 === 0 ? '#FF8552' : '#A9DDD6';
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
@@ -85,7 +85,7 @@ export default class SortingVisualizer extends React.Component {
                 const [barOneIndex, barTwoIndex] = animations[i];
                 const barOneStyle = arrayBars[barOneIndex].style;
                 const barTwoStyle = arrayBars[barTwoIndex].style;
-                const color = i % 4 === 0 ? 'blue' : 'pink';
+                const color = i % 4 === 0 ? '#FF8552' : '#A9DDD6';
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
@@ -107,11 +107,13 @@ export default class SortingVisualizer extends React.Component {
                 {array.map((value, index) => (
                     <div className = "array-bar" key={index} style={{height: `${value}px`}}></div> 
                 ))}
-                <button onClick={() => this.resetArray()}>Generate New Array</button>
-                <button onClick={() => this.mergeSort()}>Merge Sort</button>
-                <button onClick={() => this.quickSort()}>Quick Sort</button>
-                <button onClick={() => this.heapSort()}>Heap Sort</button>
-                <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
+                <br />
+                <br />
+                <button className="button" onClick={() => this.resetArray()}>Generate New Array</button>
+                <button className="button" onClick={() => this.mergeSort()}>Merge Sort</button>
+                <button className="button" onClick={() => this.quickSort()}>Quick Sort</button>
+                {/*<button className="button" onClick={() => this.heapSort()}>Heap Sort</button>*/}
+                <button className="button" onClick={() => this.bubbleSort()}>Bubble Sort</button>
             </div>
         )
     }

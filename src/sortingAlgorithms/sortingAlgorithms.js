@@ -91,6 +91,10 @@ function quickSortMerge(array, lowerArray, higherArray, pivotValue, animations, 
     }
 }
 
+export function heapSort(array) {
+    
+}
+
 export function bubbleSort(array) {
     const animations = [];
     let arraySorted = false;
