@@ -18,7 +18,7 @@ export default class SortingVisualizer extends React.Component {
         const array = [];
         
         for (let i = 0; i < 308; i++) {
-            array.push(randomIntFromInterval(5, 730));
+            array.push(randomIntFromInterval(5, 700));
         }
         this.setState({array});
     }
@@ -104,10 +104,11 @@ export default class SortingVisualizer extends React.Component {
         const {array} = this.state;
         return (
             <div className="array-container">
-                {array.map((value, index) => (
-                    <div className = "array-bar" key={index} style={{height: `${value}px`}}></div> 
-                ))}
-                <br />
+                <div className="bars">
+                    {array.map((value, index) => (
+                        <div className = "array-bar" key={index} style={{height: `${value}px`}}></div> 
+                    ))}
+                </div>
                 <br />
                 <button className="button" onClick={() => this.resetArray()}>Generate New Array</button>
                 <button className="button" onClick={() => this.mergeSort()}>Merge Sort</button>
