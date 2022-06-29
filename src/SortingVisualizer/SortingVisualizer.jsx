@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as sortingAlgorithm from '../sortingAlgorithms/sortingAlgorithms.js';
 import './SortingVisualizer.css';
 
@@ -16,9 +16,11 @@ export default class SortingVisualizer extends React.Component {
 
     resetArray() {
         const array = [];
-        
-        for (let i = 0; i < 308; i++) {
-            array.push(randomIntFromInterval(5, 700));
+
+        /*const width = (window.innerHeight - 200) / 4;*/
+
+        for (let i = 0; i < 250; i++) {
+            array.push(randomIntFromInterval(5, window.innerHeight - 120));
         }
         this.setState({array});
     }
@@ -102,11 +104,14 @@ export default class SortingVisualizer extends React.Component {
 
     render() {
         const {array} = this.state;
+        const numOfBars = 250;
+        const width = ((window.innerWidth - 200) / numOfBars) - 2;
+        console.log(width);
         return (
             <div className="array-container">
                 <div className="bars">
                     {array.map((value, index) => (
-                        <div className = "array-bar" key={index} style={{height: `${value}px`}}></div> 
+                        <div className = "array-bar" key={index} style={{height: `${value}px`, width: `${width}px`}}></div> 
                     ))}
                 </div>
                 <br />
