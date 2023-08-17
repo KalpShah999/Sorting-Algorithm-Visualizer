@@ -91,6 +91,7 @@ function quickSortMerge(array, lowerArray, higherArray, pivotValue, animations, 
     }
 }
 
+// Yet to be implemented 
 export function heapSort(array) {
     
 }

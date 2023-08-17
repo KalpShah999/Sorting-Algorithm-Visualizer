@@ -4,6 +4,7 @@ import './App.css';
 import './SortingVisualizer/SortingVisualizer.css';
 
 function App() {
+  // Load the Sorting Visualizer page 
   return (
     <div className="App">
       <div className="Content">
