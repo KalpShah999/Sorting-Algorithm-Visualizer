@@ -67,6 +67,8 @@ export default class SortingVisualizer extends React.Component {
             const arrayBars = document.getElementsByClassName('array-bar');
             
             // Change the colour during the middle phase of the 3-piece animation 
+            // Note that from sortingAlgorithms.js, the three stages of the animations represent: 
+            //   1.  
             const isColorChange = i % 3 !== 2;
 
             if (isColorChange) {
@@ -105,6 +107,9 @@ export default class SortingVisualizer extends React.Component {
             const arrayBars = document.getElementsByClassName('array-bar');
 
             // Change the colour of every other pair of animations  
+            // Note that from sortingAlgorithms.js, every other pair of animations represents the indices
+            //   allowing for their colour to be changed, and the other represents the new values 
+            //   of the array at those indices 
             const isColorChange = i % 4 < 2;
 
             if (isColorChange) {
